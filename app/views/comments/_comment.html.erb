@@ -1,0 +1,21 @@
+<div id="<%= dom_id(comment) %>" class="card">
+    <div class="card-body">
+        <h5 class="card-title">Contenido:</h5>
+        <p class="card-text"><%= comment.content %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <strong>Noticia:</strong>
+            <%= comment.news_id %>
+        </li>
+         <li class="list-group-item">
+            <strong>Posteado por:</strong>
+            <% if comment.user %>
+                <%= comment.user.name %>
+            <% else %>
+               <h3> Invitado </h3>
+            <% end %>
+        </li>
+
+    </ul>
+</div>

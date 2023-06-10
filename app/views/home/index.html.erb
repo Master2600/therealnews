@@ -1,2 +1,16 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <div style="position: relative; display: inline-block; pt: 0">
+    <%= image_tag("website.png", alt: "Ejemplo de imagen", class: "img-thumbnail", style: "width: 100%; height: auto; cover") %>
+    <div style="position: absolute; top: 0; left: 0; color: white; padding: 20px;">
+      <h1>The Rial News</h1>
+      <p>Tu Portal de Noticias</p>
+    </div>
+    <div style="position: absolute; top: 0; right: 0; color: white; padding: 20px;">
+      <% if user_signed_in? %>
+        <h4>Bienvenido!!</h4>
+      <% else %>
+        <h4>Bienvenido!! Inicia Sesíon</h4>
+      <% end %>
+    </div>
+  </div>
+</div>

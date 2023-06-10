@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url("../images/fondo 2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
+  
+ /*
+  .custom-background {
+    background-color: #d8e1e2;
+  } */
+
+
+
+  .footer {
+    background-color: #b8bfc2;
+    border-top: 1px solid #012035;
+    padding: 10px;
+    text-align: center;
+  }
+  

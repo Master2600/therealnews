@@ -1,0 +1,15 @@
+<%= render @comment %>
+
+<div>
+  <%= link_to "Editar este comentario", edit_comment_path(@comment), class: "btn btn-primary" %> |
+  <%= link_to "Volver a comentarios", comments_path, class: "btn btn-primary" %>
+<br> <br>
+</div>
+
+<div>
+  <%= link_to "Volver a Noticias", news_index_path, class: "btn btn-primary" %>
+<br> <br>
+</div>
+
+<%= button_to "Eliminar Comentario", @comment, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+

@@ -1,0 +1,13 @@
+<h2 class="display-4">Nueva Noticia</h2>
+
+<%= render "form", news: @news %>
+
+<br>
+
+<% if flash[:warning] %>
+  <p class="text-danger"><%= flash[:warning] %></p>
+<% end %>
+
+<div>
+  <%= link_to "Volver a Noticias", news_index_path, class: "btn btn-secondary" %>
+</div>

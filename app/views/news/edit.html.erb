@@ -1,0 +1,10 @@
+<h3 class="display-4">Editando Noticias</h3>
+
+<%= render "form", news: @news %>
+
+<br>
+
+<div class="btn-group">
+  <%= link_to "Ver esta Noticia", @news, class: "btn btn-primary" %> |
+  <%= link_to "Volver a Noticias", news_index_path, class: "btn btn-secondary" %>
+</div>

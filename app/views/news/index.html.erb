@@ -1,0 +1,13 @@
+<h1 class="display-4">Muro de Noticias</h1>
+
+<div id="news">
+  <% @news.each do |news| %>
+    <%= render news %>
+    <p>
+      <%= link_to "Ver esta noticia", news, class: "btn btn-primary" %>
+      <hr class="border-bottom border-4">
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Nueva Noticia", new_news_path, class: "btn btn-success" %>

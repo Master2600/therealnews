@@ -1,0 +1,33 @@
+<%= form_with(model: @comment, url: news_comments_path(@news), local: true) do
+|form| %>
+
+  <% if @comment.errors.any? %>
+      <div class="alert alert-danger">
+          <h2><%= pluralize(@comment.errors.count, "error") %>
+              Prohibido grabar este comentario</h2>
+
+          <ul>
+              <% @comment.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+              <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+  <div class="mb-3">
+      <%= form.label :content, "Contenido", class: "form-label" %>
+      <%= form.text_area :content, class: "form-control" %>
+  </div>
+
+  <div>
+      <%= form.hidden_field :news_id, value: @news.id %>
+  </div>
+
+  <div>
+      <%= form.hidden_field :user_id, value: current_user.id if user_signed_in? %>
+  </div>
+
+  <div>
+  <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

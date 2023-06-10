@@ -1,0 +1,31 @@
+<h1 class="display-4"><%= @news.title %></h1>
+<p><%= @news.content %></p>
+<hr class="border-bottom border-2">
+
+<% if user_signed_in? %>
+  <% if current_user || current_user == @news.user %>
+    <%= link_to 'Editar Noticia', edit_news_path(@news), class: 'btn btn-primary' %> |
+    <%= link_to 'Borrar Noticia', @news, method: :delete, data: { confirm: '¿Está seguro?' }, class: 'btn btn-danger' %>
+  <% end %>
+<% end %>
+
+<h3>Comentarios:</h3>
+<% @news.comments.each do |comment| %>
+  <p><strong><%= comment.user.try(:email) || "invitado" %>:</strong> <%= comment.content %></p>
+
+  <% if user_signed_in? && (current_user == comment.user || current_user.admin?) %>
+   <%= link_to 'Borrar Comentario', news_comment_path(@news, comment), method: :delete, data: { confirm: '¿Está seguro?' }, class: 'btn btn-danger' %>
+
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= render 'comments/form', news: @news %>
+<% else %>
+  <%= render 'comments/form', news: @news %>
+<% end %> 
+
+<div class="container">
+<br>
+  <%= link_to "Volver a Noticias", news_index_path, class: 'btn btn-secondary' %>
+</div>
