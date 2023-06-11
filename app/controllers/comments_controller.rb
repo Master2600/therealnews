@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comentario eliminado." }
+      format.html { redirect_to @comment.news, notice: "Comentario eliminado." }
       format.json { head :no_content }
     end
   end

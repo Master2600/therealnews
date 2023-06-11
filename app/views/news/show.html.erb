@@ -1,6 +1,7 @@
-<h1 class="display-4"><%= @news.title %></h1>
+<h2 class="display-4 text-primary font-weight-bold"><%= @news.title %></h2>
 <p><%= @news.content %></p>
 <hr class="border-bottom border-2">
+
 
 <% if user_signed_in? %>
   <% if current_user || current_user == @news.user %>
