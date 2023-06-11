@@ -29,12 +29,13 @@ class CommentsController < ApplicationController
     if user_signed_in?
       @comment.user_id = current_user.id
     else
-      @comment.user = nil
+      @comment.user_id = User.find_by(email: 'invitado@tudominio.com').id
+
     end
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: "Comentario creado exitosamente." }
+        format.html { redirect_to @comment.news, notice: "Comentario creado exitosamente." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }

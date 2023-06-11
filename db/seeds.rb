@@ -9,6 +9,8 @@
 # Crear usuarios de ejemplo
 User.create(email: 'usuario1@example.com', password: 'password1', role: 1, name: 'Usuario 1', age: '25')
 User.create(email: 'usuario2@example.com', password: 'password2', role: 2, name: 'Usuario 2', age: '30')
+User.create(email: 'invitado@tudominio.com', password: 'password', role: 0, name:'Invitado', age:'0')
+
 # Agrega más usuarios si es necesario
 
 # Crear noticias de ejemplo asociadas a un usuario

@@ -8,14 +8,16 @@
             <strong>Noticia:</strong>
             <%= comment.news_id %>
         </li>
-         <li class="list-group-item">
-            <strong>Posteado por:</strong>
-            <% if comment.user %>
-                <%= comment.user.name %>
+    <li class="list-group-item">
+        <strong>Posteado por:</strong>
+        <% if comment.user %>
+            <% if comment.user.email == 'invitado@tudominio.com' %>
+                <h3>Invitado</h3>
             <% else %>
-               <h3> Invitado </h3>
+                <%= comment.user.name %>
             <% end %>
-        </li>
+        <% end %>
+    </li>
 
     </ul>
 </div>

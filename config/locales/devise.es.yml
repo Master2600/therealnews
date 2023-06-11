@@ -61,11 +61,3 @@ es:
       not_saved:
       one: "Se encontró 1 error y no se pudo guardar %{resource}:"
       other: "Se encontraron %{count} errores y no se pudo guardar %{resource}:"
-  activerecord:
-    errors:
-      models:
-        comment:
-          attributes:
-            user:
-              required: "El usuario es obligatorio"
-   

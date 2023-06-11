@@ -11,11 +11,20 @@
 
 <h3>Comentarios:</h3>
 <% @news.comments.each do |comment| %>
-  <p><strong><%= comment.user.try(:email) || "invitado" %>:</strong> <%= comment.content %></p>
+  <p><strong>
+    <% if comment.user %>
+      <% if comment.user.email == 'invitado@tudominio.com' %>
+        Invitado
+      <% else %>
+        <%= comment.user.name %>
+      <% end %>
+    <% else %>
+      Invitado
+    <% end %>
+  </strong>: <%= comment.content %></p>
 
   <% if user_signed_in? && (current_user == comment.user || current_user.admin?) %>
-   <%= link_to 'Borrar Comentario', news_comment_path(@news, comment), method: :delete, data: { confirm: '¿Está seguro?' }, class: 'btn btn-danger' %>
-
+    <%= link_to 'Borrar Comentario', news_comment_path(@news, comment), method: :delete, data: { confirm: '¿Está seguro?' }, class: 'btn btn-danger' %>
   <% end %>
 <% end %>
 
@@ -26,6 +35,6 @@
 <% end %> 
 
 <div class="container">
-<br>
+  <br>
   <%= link_to "Volver a Noticias", news_index_path, class: 'btn btn-secondary' %>
 </div>

@@ -1,0 +1,43 @@
+es:
+  activerecord:
+    errors:
+      models:
+        user: "Usuario"
+        post: "Publicación"
+        # Agrega más modelos aquí si es necesario
+
+      attributes:
+        user:
+          email: "Correo electrónico"
+          password: "Contraseña"
+          # Agrega más atributos de usuario aquí si es necesario
+
+        post:
+          title: "Título"
+          content: "Contenido"
+          # Agrega más atributos de publicación aquí si es necesario
+
+      messages:
+        blank: "no puede estar en blanco"
+        taken: "ya ha sido tomado/a"
+        too_short:
+          one: "es demasiado corto (mínimo 1 carácter)"
+          other: "es demasiado corto (mínimo %{count} caracteres)"
+        too_long:
+          one: "es demasiado largo (máximo 1 carácter)"
+          other: "es demasiado largo (máximo %{count} caracteres)"
+        invalid: "no es válido/a"
+        confirmation: "no coincide con la confirmación"
+        not_a_number: "no es un número"
+        not_an_integer: "no es un número entero"
+        not_a_valid_email: "no es un correo electrónico válido"
+        not_unique: "debe ser único/a"
+        not_found: "no encontrado/a"
+        invalid_datetime: "no es una fecha y hora válida"
+        # Agrega más mensajes aquí si es necesario
+
+    template:
+      header:
+        one: "No se pudo guardar %{model}: 1 error"
+        other: "No se pudo guardar %{model}: %{count} errores"
+      body: "Por favor corrige los siguientes errores:"
