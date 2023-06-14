@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @user = User.all # cambie de @users a @user para ver si ese es el error en render.com
+    @users = User.all 
   end
 
   # GET /users/1 or /users/1.json
