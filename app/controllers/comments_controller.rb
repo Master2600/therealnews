@@ -2,27 +2,22 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
-  # GET /comments or /comments.json
   def index
     @comments = Comment.all
   end
 
-  # GET /comments/1 or /comments/1.json
   def show
   end
 
-  # GET /comments/new
   def new
     @news = News.find_by(id: params[:news_id])
     @comment = Comment.new
   end
 
-  # GET /comments/1/edit
   def edit
     @news = @comment.news
   end
 
-  # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
 
@@ -30,7 +25,6 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
     else
       @comment.user_id = User.find_by(email: 'invitado@tudominio.com').id
-
     end
 
     respond_to do |format|
@@ -44,11 +38,10 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1 or /comments/1.json
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comentario Actualizado!!" }
+        format.html { redirect_to @comment.news, notice: "Comentario actualizado exitosamente." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,27 +50,28 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-
     respond_to do |format|
-      format.html { redirect_to @comment.news, notice: "Comentario eliminado." }
+      format.html { redirect_to @comment.news, notice: "Comentario eliminado exitosamente." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:content, :news_id, :user_id, :user_name, :user_email)
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content, :news_id, :user_id)
+  end
+
+  def authorize_user!
+    unless current_user == @comment.user || current_user.admin?
+      flash[:alert] = "No estás autorizado para realizar esta acción."
+      redirect_to root_path
     end
-    def authorize_user!
-      redirect_to root_path, alert: 'No tienes permiso para realizar esta acción' unless @comment.user == current_user
-    end  
+  end
 end

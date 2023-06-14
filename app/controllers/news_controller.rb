@@ -102,7 +102,10 @@ class NewsController < ApplicationController
   
     def authorize_user_or_admin!
       unless current_user.admin? || (current_user == @news.user)
-        redirect_to root_path, alert: "No tienes permisos para realizar esta acción."
+        flash[:alert] = "No tienes permisos para realizar esta acción."
+        redirect_to root_path
       end
     end
+    
+    
 end
